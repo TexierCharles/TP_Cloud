@@ -82,7 +82,7 @@
               
               <div class="row">
                   <div class=" col-md-1 col-sm-1 col-xs-1 " >
-                       <button type="button" class="btn btn-success">Add an Exercice</button>
+                       <button type="button" class="btn btn-success" onclick="createTable();">Add an Exercice</button>
                    </div>
                  <div class=" col-md-12 col-sm-12 col-xs-12 " ></div>
               </div>
@@ -96,11 +96,11 @@
                     </div>
                     <div class=" col-md-2 col-sm-4 col-xs-12 ">
                         <div class="input-group">
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" id="time1">
                             <span class="input-group-addon" style="padding:0px">:</span>
-                           <input type="text" class="form-control">
+                           <input type="text" class="form-control" id="time2">
                           <span class="input-group-addon" style="padding:0px">:</span>
-                          <input type="text" class="form-control">
+                          <input type="text" class="form-control" id="time3">
 
                         </div>
                     </div>
@@ -124,7 +124,7 @@
           
          <div class=" col-md-1 col-sm-0 col-xs-0 " ></div>
         <div class=" col-md-9 col-sm-12 col-xs-12 " >
-                <table class="table table-striped table-condensed">
+            <!--    <table class="table table-striped table-condensed">
                     <tr>
                         <td>1</td>
                         <td>Warm Up</td>
@@ -147,7 +147,27 @@
                         <td> <button type="submit" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-remove"></span> </button></td>
                     </tr>
                     
-                </table>
+                </table> -->
+
+				<!-- Row Count:<input type="text" id="rowcount" />
+				Column Count:<input type="text" id="columncount" /> 
+				<input type="button" onclick="createTable();" value="Create Table" /> -->
+				<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+                <script type="text/javascript" src="js/createTable.js"></script>
+				<style>
+					table{
+						width:700px;
+						height:100px;
+					}
+					table td{
+						padding:10px;
+						margin:10px;
+						border:1px solid #ccc;
+					}
+				</style>
+				<div id="box">
+				</div>
+                
              </div>
             
     <div class=" col-md-2 ol-sm-0 col-xs-0 " ></div>
