@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<servlet>
+		<servlet-name>AddWelcomeMsg</servlet-name>
+		<servlet-class>cloud.AddWelcomeMsg</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddWelcomeMsg</servlet-name>
+		<url-pattern>/addWelcomeMsg</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GetWelcomeMsg</servlet-name>
+		<servlet-class>cloud.GetWelcomeMsg</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetWelcomeMsg</servlet-name>
+		<url-pattern>/getWelcomeMsg</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AddTrainingPlan</servlet-name>
+		<servlet-class>cloud.AddTrainingPlan</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddTrainingPlan</servlet-name>
+		<url-pattern>/addTrainingPlan</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>

@@ -1,0 +1,30 @@
+html,body {height: 100%; padding-top: 0px; overflow-x:hidden; overflow-y:auto}
+.zeroRef{padding: 0px;margin:0px}
+.fullScreenHeight{height: 100%;}
+.centralHeaderPanel{height:20%;overflow-y:auto;}
+.centralPanel{height: 80%;}
+.lateralLeft{overflow-y:auto;}
+.lateralRight{overflow-y:auto;}
+
+
+.clock {
+/*position: relative !important;*/
+padding: 0px;
+margin: 0px;
+/*height:100px;
+width: 500px;*/
+/*zoom: 1.1; */
+transform: scale(.54);
+-ms-transform: scale(.54); /* IE 9 /
+-webkit-transform: scale(.54); / Safari and Chrome /
+-o-transform: scale(.54); / Opera /
+-moz-transform: scale(.54); / Firefox */
+}
+
+.unclock{
+    transform: scale(1);
+-ms-transform: scale(1); /* IE 9 /
+-webkit-transform: scale(1); / Safari and Chrome /
+-o-transform: scale(1); / Opera /
+-moz-transform: scale(1); / Firefox */
+}
