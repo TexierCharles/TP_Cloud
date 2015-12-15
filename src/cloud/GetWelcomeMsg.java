@@ -42,15 +42,15 @@ public class GetWelcomeMsg extends HttpServlet {
 	    props.put(GCacheFactory.EXPIRATION_DELTA, 3600);
 	    props.put(MemcacheService.SetPolicy.ADD_ONLY_IF_NOT_PRESENT, true);
 	    try {
-	      // R�cup�ration du Cache
+	      // Récupération du Cache
 	        CacheFactory cacheFactory = CacheManager.getInstance().getCacheFactory();
-	        // cr�ation/r�cup�ration du cache suivant des propri�t�s sp�cifiques
+	        // création/récupération du cache suivant des propriétés spécifiques
 	        cache = cacheFactory.createCache(props);
-	        // Si aucune propri�t� n'est sp�cifi�e, 
-	        //cr�er/r�cup�rer un cache comme ci-dessous
+	        // Si aucune propriété n'est spécifiée, 
+	        //créer/récupérer un cache comme ci-dessous
 	        //cache = cacheFactory.createCache(Collections.emptyMap());
 	     } catch (CacheException e) {
-	         // Traitement en cas d'erreur sur la r�cup�ration/configuration du cache
+	         // Traitement en cas d'erreur sur la récupération/configuration du cache
 	     }
 	    
 		String welcome_msg = getWelcomeMsg(datastore, cache);
