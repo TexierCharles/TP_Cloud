@@ -48,6 +48,7 @@ public class AddTrainingPlan extends HttpServlet {
 			String titleValue = req.getParameter(TITLE_LABEL);
 			String descriptionValue = req.getParameter(DESCRIPTION_LABEL);
 			String domainValue = req.getParameter(DOMAIN_LABEL);
+			
 			//String exerciceTitle = req.getParameter(EXERCICE_TITLE_LABEL);
 			//String exerciceDescription = req.getParameter(EXERCICE_DESCRIPTION_LABEL);
 			

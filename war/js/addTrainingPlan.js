@@ -5,7 +5,7 @@ $(document).ready(function(){
     		    cmd:"addTrainingPlan",
     		    title:$("#inputTitle").val(),
     		    description:$("#inputDescription").val(),
-    		    domain:$("#e1").val,
+    		    domain:$("#inputDomain :selected").text()
     		    //exercice:{exerciceTitle:$("titleDescription").val(), exerciceDescription:$("exerciceDescription").val()}, // need to be create before and out of the POST
     		  },
     		  function(data,status){

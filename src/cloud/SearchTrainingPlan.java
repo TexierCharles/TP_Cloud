@@ -57,7 +57,6 @@ public class SearchTrainingPlan extends HttpServlet{
 					String searchArea = req.getParameter(SEARCHAREA_LABEL);
 					Query q = new Query("training");
 					q.addFilter(SEARCH_TRAINING_ENTITY_PROPERTY_TITLE, Query.FilterOperator.EQUAL, searchArea);
-					// you can add filter hier :) q.addFilter("lastName", Query.FilterOperator.EQUAL, lastNameParam);
 					
 					PreparedQuery pq = datastore.prepare(q);
 					for(Entity result : pq.asIterable())
