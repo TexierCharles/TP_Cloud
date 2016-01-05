@@ -63,8 +63,23 @@ public class SearchTrainingPlan extends HttpServlet{
 					{
 						System.out.println("result : " + result);
 						System.out.println("my training plan title : "+ (String) result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_TITLE));
+						//resp.getWriter().println("<h1> Your training plan is : " + result.toString() + "</h1>");
+						//resp.getWriter().write(buf);
+						resp.getWriter().println("<SCRIPT LANGUAGE='javascript'> console.log('from servlet'); </SCRIPT>");
 					}				
 	}
 	
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+	{
+		try {
+			doPost(req, resp);
+		} catch (ServletException e) {
+	
+			e.printStackTrace();
+		} catch (IOException e) {
+	
+			e.printStackTrace();
+		}
+	}
 
 }

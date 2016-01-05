@@ -5,6 +5,8 @@ $(document).ready(function(){
     		    searchArea:$("#searchArea").val(),
     		  },
     		  function(data,status){
+    			  console.log("ici");
+    			  $('#divserarch').html("flkjdsqgfiuycsgfdiubfezjnxro");
     		  });
   		});
 });

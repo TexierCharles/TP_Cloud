@@ -18,9 +18,9 @@
       <nav class="navbar navbar-inverse" role="navigation">
         <div class=" col-md-10 col-sm-10 col-xs-10 ">
             <form class="navbar-form navbar-left"  style="width:100%" role="search">
-                <button type="submit" class="btn btn-default">Search</button>
+                <button type="submit" class="btn btn-default" id=searchTrainingPlan >Search</button>
                 <div class="form-group"  style="width:90%">
-                    <input type="text"  style="width:100%" class="form-control" placeholder="Search">
+                    <input type="text"  style="width:100%" class="form-control" placeholder="Search" id="searchArea">
                 </div>
           </form>
         </div>
@@ -34,8 +34,31 @@
       </nav>
       <!-- ------------------------------------------- HEADER ZONE END ------------------------------------------- -->
       
+
       <div class=" col-md-12 col-sm-12 col-xs-12 " style="margin-bottom:40px">
           <h3> Training plans</h3>
+          
+          
+          
+          <SCRIPT LANGUAGE="javascript">
+			function getQueryVariable2(variable) { 
+ 				var query = window.location.search.substring(1); 
+  				document.write(query);
+			}
+ 			getQueryVariable2("searchArea");
+		</SCRIPT>
+          
+          
+          <div id="divserarch" name="divserarch" > helloq </div>
+          
+          <APPLET CODE=applet_test.class Width=0 Height=0></APPLET>
+		<script type="text/javascript">
+			console.log("tu qu'une merde ");
+		</script>
+          
+          
+          
+          
           <div class=" col-md-6 col-sm-6 col-xs-6">
              <button type="submit" class="btn btn-link">Intensive Running  </button>
           </div>
@@ -80,8 +103,10 @@
       </nav>
       <!-- ------------------------------------------- FOOTER ZONE END ------------------------------------------- -->
     
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/searchTrainingPlan.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
   </body>
