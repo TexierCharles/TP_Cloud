@@ -26,6 +26,8 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.jsr107cache.GCacheFactory;
+import com.google.appengine.labs.repackaged.org.json.JSONException;
+import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 public class SearchTrainingPlan extends HttpServlet{
 	
@@ -38,7 +40,7 @@ public class SearchTrainingPlan extends HttpServlet{
 	
 	private final static String SEARCH_TRAINING_KEY="trainingkey";
 	
-	private String searchTraining;
+	private JSONObject searchTraining =new JSONObject();
 	private String searchAreaFilter; 
 	
 	private final static String CMD_LABEL="cmd";
@@ -65,12 +67,20 @@ public class SearchTrainingPlan extends HttpServlet{
 						System.out.println("result : " + result);
 						System.out.println("my training plan title : "+ (String) result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_TITLE));
 						
-						searchTraining = result.toString();
-					}
+						try {
+							searchTraining.put("title", result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_TITLE).toString());
+							searchTraining.put("description", result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_DESCRIPTION).toString());
+							searchTraining.put("domain", result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_DOMAIN).toString());
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+
+						
+					}			
 					PrintWriter out = resp.getWriter();
-				    out.write(searchTraining);
+				    out.write(searchTraining.toString());
 				    out.flush();
-				    searchTraining = "";
 	}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)

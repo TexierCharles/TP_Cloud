@@ -5,10 +5,10 @@ $(document).ready(function(){
 	  		    searchArea:$("#searchArea").val()
 	  		  }).done(function( data, status ) {
 	  			  //alert(data);
-	  			  console.log("ici " + status + data.toString() + " ici");
-	  			  $('#divserarch').html("flkjdsqgfiuycsgfdiubfezjnxro   :  " + data.toString());
-	  			  data="";
+	  			  console.log("ici " + status + data.toString());
+	  			  $('#training').html("flkjdsqgfiuycsgfdiubfezjnxro   :  " + data.toString());
+	  			console.log("ici " + status + data.toString());
+	  			document.getElementById("training").innerHTML = data;
 	  		  });	 
 	  	});
 });
-  
