@@ -1,6 +1,7 @@
 package cloud;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,10 +64,13 @@ public class SearchTrainingPlan extends HttpServlet{
 					{
 						System.out.println("result : " + result);
 						System.out.println("my training plan title : "+ (String) result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_TITLE));
-						//resp.getWriter().println("<h1> Your training plan is : " + result.toString() + "</h1>");
-						//resp.getWriter().write(buf);
-						resp.getWriter().println("<SCRIPT LANGUAGE='javascript'> console.log('from servlet'); </SCRIPT>");
-					}				
+						
+						searchTraining = result.toString();
+					}
+					PrintWriter out = resp.getWriter();
+				    out.write(searchTraining);
+				    out.flush();
+				    searchTraining = "";
 	}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
