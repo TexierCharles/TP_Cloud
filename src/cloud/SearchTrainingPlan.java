@@ -64,8 +64,6 @@ public class SearchTrainingPlan extends HttpServlet{
 					PreparedQuery pq = datastore.prepare(q);
 					for(Entity result : pq.asIterable())
 					{
-						System.out.println("result : " + result);
-						System.out.println("my training plan title : "+ (String) result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_TITLE));
 						
 						try {
 							searchTraining.put("title", result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_TITLE).toString());
@@ -75,8 +73,9 @@ public class SearchTrainingPlan extends HttpServlet{
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-
-						
+						// System.out.println("result : " + result);
+						System.out.println("my training plan title : "+ (String) result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_TITLE));
+						System.out.println("JSON training : "+ searchTraining.toString());
 					}			
 					PrintWriter out = resp.getWriter();
 				    out.write(searchTraining.toString());
@@ -85,7 +84,8 @@ public class SearchTrainingPlan extends HttpServlet{
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 	{
-		try {
+		System.out.println("servlet do get");
+		/*try {
 			doPost(req, resp);
 		} catch (ServletException e) {
 	
@@ -93,7 +93,7 @@ public class SearchTrainingPlan extends HttpServlet{
 		} catch (IOException e) {
 	
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 }
