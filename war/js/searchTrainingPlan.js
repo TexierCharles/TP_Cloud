@@ -23,12 +23,7 @@ $(document).ready(function(){
 	       			  var jsonData = jQuery.parseJSON(data);
 	       			  console.log("parse JSON " + jsonData.description.toString());
 		 	  		document.getElementById("training").innerHTML = jsonData.title.toString() + " " + jsonData.description.toString() + " " + jsonData.domain.toString();
-		 	  		
-		 	  	/*	for (var i=3 ; i < jsonData.lenght() -3; i++)
-		 	  		{
-		 	  			var jsonDataEx = jQuery.parseJSON(jsonData.exercice); 
-		 	  		}
-		 	  		*/
+
 		 	  	console.log("first" + jsonData.exercice.ex_title.toString());
 		 	  	document.getElementById("exercice").innerHTML = jsonData.exercice.ex_title.toString() + " " + jsonData.exercice.description_ex.toString() + " " + jsonData.exercice.duree_ex.toString();
 	       		  });
@@ -52,13 +47,15 @@ $(document).ready(function(){
 		       		       			  console.log("parse JSON " + jsonData.description.toString());
 		       			 	  		document.getElementById("training").innerHTML = jsonData.title.toString() + " " + jsonData.description.toString() + " " + jsonData.domain.toString();
 		       			 	  		
-		       			 	  	/*	for (var i=3 ; i < jsonData.lenght() -3; i++)
+
+		       			 	  		for (var i=0; i < jsonData.exercices.length ; i++)
 		       			 	  		{
-		       			 	  			var jsonDataEx = jQuery.parseJSON(jsonData.exercice); 
+			       			 	  		var exoDataJSON = jQuery.parseJSON(jsonData.exercices[i]);
+				       			 	  	console.log("first" + exoDataJSON.ex_title.toString());
+				       			 	  	var stringForDiv = "exercice"+i;
+				       			 	  	document.getElementById(stringForDiv.toString()).innerHTML = exoDataJSON.ex_title.toString() + " " + exoDataJSON.description_ex.toString() + " " + exoDataJSON.duree_ex.toString();
 		       			 	  		}
-		       			 	  		*/
-		       			 	  	console.log("first" + jsonData.exercice.ex_title.toString());
-		       			 	  	document.getElementById("exercice").innerHTML = jsonData.exercice.ex_title.toString() + " " + jsonData.exercice.description_ex.toString() + " " + jsonData.exercice.duree_ex.toString();
+		       			 	  	
 		       		  });
 		     		});
 });

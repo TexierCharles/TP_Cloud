@@ -26,6 +26,7 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.jsr107cache.GCacheFactory;
+import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -46,8 +47,11 @@ public class SearchTrainingPlan extends HttpServlet{
 	
 	private final static String SEARCH_TRAINING_KEY="trainingkey";
 	
-	private JSONObject searchTraining =new JSONObject();
-	private JSONObject searchExercice =new JSONObject();
+	private JSONObject searchTraining =null;
+	private JSONObject searchExercice =null;
+	private JSONArray exercices = null;
+	
+	
 	private String searchAreaFilter; 
 	
 	private final static String CMD_LABEL="cmd";
@@ -64,6 +68,9 @@ public class SearchTrainingPlan extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException 
 	{	
+					exercices = new JSONArray();
+					searchTraining = new JSONObject();
+					searchExercice = new JSONObject();
 					String searchArea = req.getParameter(SEARCHAREA_LABEL);
 					Query q = new Query("training");
 					q.addFilter(SEARCH_TRAINING_ENTITY_PROPERTY_TITLE, Query.FilterOperator.EQUAL, searchArea);
@@ -105,15 +112,9 @@ public class SearchTrainingPlan extends HttpServlet{
 							
 							
 							System.out.println("searchExercice : ex_title"+ searchExercice.toString() );
-							searchTraining.put("exercice", searchExercice);
-							
-							
-						/*	for(int i = 0; i < searchExercice.length(); i++) {
-							    searchExercice.remove("title_ex");
-							    searchExercice.remove("description_ex");
-							    searchExercice.remove("duree_ex");
-							    searchExercice.remove("position_ex");
-							}*/
+							//searchTraining.put("exercice"+resultE.getProperty(SEARCH_EXERCICE_ENTITY_PROPERTY_POSITION).toString(), searchExercice);
+							exercices.put(searchExercice.toString());
+						
 						
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
@@ -121,10 +122,15 @@ public class SearchTrainingPlan extends HttpServlet{
 						}
 						// System.out.println("result : " + result);
 						System.out.println("my exercice plan title : "+ (String) resultE.getProperty(SEARCH_EXERCICE_ENTITY_PROPERTY_TITLE));
-						System.out.println("JSON exercice : "+ searchExercice.toString());
+						System.out.println("JSON exercice : "+ exercices.toString());
 					}	
 					
-					
+					try {
+						searchTraining.put("exercices", exercices);
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
 					PrintWriter out = resp.getWriter();
 				    out.write(searchTraining.toString());
