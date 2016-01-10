@@ -38,9 +38,16 @@ public class SearchTrainingPlan extends HttpServlet{
 	public static final String SEARCH_TRAINING_ENTITY_PROPERTY_DESCRIPTION="description";
 	public static final String SEARCH_TRAINING_ENTITY_PROPERTY_DOMAIN="domain";
 	
+	public static final String SEARCH_EXERCICE_ENTITY_PROPERTY_TITLE_TRAINING="title";
+	public static final String SEARCH_EXERCICE_ENTITY_PROPERTY_DESCRIPTION="description_ex";
+	public static final String SEARCH_EXERCICE_ENTITY_PROPERTY_TITLE="ex_title";
+	public static final String SEARCH_EXERCICE_ENTITY_PROPERTY_DUREE="duree_ex";
+	public static final String SEARCH_EXERCICE_ENTITY_PROPERTY_POSITION="position_ex";
+	
 	private final static String SEARCH_TRAINING_KEY="trainingkey";
 	
 	private JSONObject searchTraining =new JSONObject();
+	private JSONObject searchExercice =new JSONObject();
 	private String searchAreaFilter; 
 	
 	private final static String CMD_LABEL="cmd";
@@ -64,8 +71,9 @@ public class SearchTrainingPlan extends HttpServlet{
 					PreparedQuery pq = datastore.prepare(q);
 					for(Entity result : pq.asIterable())
 					{
-						
+					
 						try {
+							System.out.println(result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_TITLE).toString());
 							searchTraining.put("title", result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_TITLE).toString());
 							searchTraining.put("description", result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_DESCRIPTION).toString());
 							searchTraining.put("domain", result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_DOMAIN).toString());
@@ -76,7 +84,48 @@ public class SearchTrainingPlan extends HttpServlet{
 						// System.out.println("result : " + result);
 						System.out.println("my training plan title : "+ (String) result.getProperty(SEARCH_TRAINING_ENTITY_PROPERTY_TITLE));
 						System.out.println("JSON training : "+ searchTraining.toString());
-					}			
+					}				
+					
+					
+					// new query to get exercice
+					Query qE = new Query("exercice");
+					qE.addFilter(SEARCH_EXERCICE_ENTITY_PROPERTY_TITLE_TRAINING, Query.FilterOperator.EQUAL, searchArea);
+					
+					PreparedQuery pqE = datastore.prepare(qE);
+					
+					for(Entity resultE : pqE.asIterable())
+					{
+						
+						try {
+							System.out.println("searchExercice : title_ex result"+ resultE );
+							searchExercice.put("ex_title", resultE.getProperty(SEARCH_EXERCICE_ENTITY_PROPERTY_TITLE).toString());
+							searchExercice.put("description_ex", resultE.getProperty(SEARCH_EXERCICE_ENTITY_PROPERTY_DESCRIPTION).toString());
+							searchExercice.put("duree_ex", resultE.getProperty(SEARCH_EXERCICE_ENTITY_PROPERTY_DUREE).toString());
+							searchExercice.put("position_ex", resultE.getProperty(SEARCH_EXERCICE_ENTITY_PROPERTY_POSITION).toString());
+							
+							
+							System.out.println("searchExercice : ex_title"+ searchExercice.toString() );
+							searchTraining.put("exercice", searchExercice);
+							
+							
+						/*	for(int i = 0; i < searchExercice.length(); i++) {
+							    searchExercice.remove("title_ex");
+							    searchExercice.remove("description_ex");
+							    searchExercice.remove("duree_ex");
+							    searchExercice.remove("position_ex");
+							}*/
+						
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						// System.out.println("result : " + result);
+						System.out.println("my exercice plan title : "+ (String) resultE.getProperty(SEARCH_EXERCICE_ENTITY_PROPERTY_TITLE));
+						System.out.println("JSON exercice : "+ searchExercice.toString());
+					}	
+					
+					
+					
 					PrintWriter out = resp.getWriter();
 				    out.write(searchTraining.toString());
 				    out.flush();

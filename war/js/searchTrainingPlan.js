@@ -14,13 +14,23 @@ $(document).ready(function(){
 	       		  },
 	       		  function(data,status){
 	       			//alert(data);		
-	       			 	  			  console.log("ici " + status + data.toString() + " ici");
-	       			 	  			  $('#divserarch').html("flkjdsqgfiuycsgfdiubfezjnxro   :  " + data.toString());
-	       			 	  			  
-	       			 	  			  console.log("ici " + status + data.toString());
-	       			 	  			  $('#training').html("flkjdsqgfiuycsgfdiubfezjnxro   :  " + data.toString());
-	       			 	  			console.log("ici " + status + data.toString());
-	       			 	  			document.getElementById("training").innerHTML = data;
+		 	  			  console.log("ici " + status + data.toString() + " ici");
+		 	  			  $('#divserarch').html("flkjdsqgfiuycsgfdiubfezjnxro   :  " + data.toString());
+		 	  			  
+		 	  			  console.log("ici " + status + data.toString());
+		 	  			  $('#training').html("flkjdsqgfiuycsgfdiubfezjnxro   :  " + data.toString());
+		 	  			console.log("ici " + status + data.toString());
+	       			  var jsonData = jQuery.parseJSON(data);
+	       			  console.log("parse JSON " + jsonData.description.toString());
+		 	  		document.getElementById("training").innerHTML = jsonData.title.toString() + " " + jsonData.description.toString() + " " + jsonData.domain.toString();
+		 	  		
+		 	  	/*	for (var i=3 ; i < jsonData.lenght() -3; i++)
+		 	  		{
+		 	  			var jsonDataEx = jQuery.parseJSON(jsonData.exercice); 
+		 	  		}
+		 	  		*/
+		 	  	console.log("first" + jsonData.exercice.ex_title.toString());
+		 	  	document.getElementById("exercice").innerHTML = jsonData.exercice.ex_title.toString() + " " + jsonData.exercice.description_ex.toString() + " " + jsonData.exercice.duree_ex.toString();
 	       		  });
 	}
 	
@@ -38,7 +48,17 @@ $(document).ready(function(){
 		       			 	  			  console.log("ici " + status + data.toString());
 		       			 	  			  $('#training').html("flkjdsqgfiuycsgfdiubfezjnxro   :  " + data.toString());
 		       			 	  			console.log("ici " + status + data.toString());
-		       			 	  			document.getElementById("training").innerHTML = data;
+		       		       			  var jsonData = jQuery.parseJSON(data);
+		       		       			  console.log("parse JSON " + jsonData.description.toString());
+		       			 	  		document.getElementById("training").innerHTML = jsonData.title.toString() + " " + jsonData.description.toString() + " " + jsonData.domain.toString();
+		       			 	  		
+		       			 	  	/*	for (var i=3 ; i < jsonData.lenght() -3; i++)
+		       			 	  		{
+		       			 	  			var jsonDataEx = jQuery.parseJSON(jsonData.exercice); 
+		       			 	  		}
+		       			 	  		*/
+		       			 	  	console.log("first" + jsonData.exercice.ex_title.toString());
+		       			 	  	document.getElementById("exercice").innerHTML = jsonData.exercice.ex_title.toString() + " " + jsonData.exercice.description_ex.toString() + " " + jsonData.exercice.duree_ex.toString();
 		       		  });
 		     		});
 });
