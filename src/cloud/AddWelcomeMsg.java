@@ -19,7 +19,7 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
 @SuppressWarnings("serial")
 public class AddWelcomeMsg extends HttpServlet {
 	public static final String WELCOME_MSG_ENTITY_KEY="WelcomeMsg";
-	public static final String WELCOME_MSG_MSG_ENTITY_PROPERTY="msg";
+	public static final String WELCOME_MSG_MSG_ENTITY_PROPERTY="your training";
 
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)

@@ -34,7 +34,6 @@ public class GetWelcomeMsg extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		resp.setContentType("text/plain");
-		resp.getWriter().println("Hello, world from GetWelcomeMsg ");
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Cache cache=null;
@@ -55,7 +54,7 @@ public class GetWelcomeMsg extends HttpServlet {
 	    
 		String welcome_msg = getWelcomeMsg(datastore, cache);
 		
-		resp.getWriter().println("My welcome msg from cache or datastore but anyway added in cache is : " + welcome_msg);
+		resp.getWriter().println("Welcome to " + welcome_msg);
 	}
 	
 	

@@ -53,5 +53,6 @@ $(document).ready(function(){
 		  function(data,status){
 		  }, "json");
 	
+	  	window.location.href = "ha-search-screen.html";
   		}); 
 });
