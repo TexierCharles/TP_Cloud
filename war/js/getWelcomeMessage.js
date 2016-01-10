@@ -1,9 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function() {
 	var welcomeMessage;
 
-	$.get("/getWelcomeMsg", function(data,status){
+	$.get("/getWelcomeMsg", function(data, status) {
 		welcomeMessage = data;
 		$('.message').html(welcomeMessage);
-	}); 
-	
+	});
+
 });
