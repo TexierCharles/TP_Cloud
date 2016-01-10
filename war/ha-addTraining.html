@@ -41,7 +41,7 @@
                 <label for="inputTitle">Title</label>  
              </div>
             <div class=" col-md-6 col-sm-6 col-xs-12 ">
-                <input type="email" class="form-control" id="inputTitle" placeholder="Enter your Training plan title">
+                <input type="text" class="form-control" id="inputTitle" placeholder="Enter your Training plan title">
              </div>
               <div class=" col-md-3 col-sm-4 hidden-xs">
                   <div class=" col-md-4 col-sm-4 hidden-xs">
@@ -82,7 +82,7 @@
               
               <div class="row">
                   <div class=" col-md-1 col-sm-1 col-xs-1 " >
-                       <button type="button" class="btn btn-success" onclick="createTable();">Add an Exercice</button>
+                       <button type="button" class="btn btn-success" id="addexButton">Add an Exercice</button>
                    </div>
                  <div class=" col-md-12 col-sm-12 col-xs-12 " ></div>
               </div>
@@ -92,7 +92,7 @@
                         <label for="titleDescription">Ex. Title</label>  
                     </div>
                     <div class=" col-md-6 col-sm-6 col-xs-12 ">
-                        <input type="email" class="form-control" id="titleDescription" placeholder="Enter your exercice title">
+                        <input type="text" class="form-control" id="titleDescription" placeholder="Enter your exercice title">
                     </div>
                     <div class=" col-md-2 col-sm-4 col-xs-12 ">
                         <div class="input-group">
@@ -153,7 +153,6 @@
 				Column Count:<input type="text" id="columncount" /> 
 				<input type="button" onclick="createTable();" value="Create Table" /> -->
 				<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-                <script type="text/javascript" src="js/createTable.js"></script>
 				<style>
 					table{
 						width:700px;
@@ -200,9 +199,9 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="lib/select2-3.5.1/select2.min.js"></script>
-    <script>
+  <!--   <script>
         $(document).ready(function() { $("#e1").select2(); });
-    </script>
+    </script>-->
              
   </body>
 </html>
